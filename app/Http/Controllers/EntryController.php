@@ -36,13 +36,13 @@ class EntryController extends Controller
         $entry->content = $request->get('content');
 
         if($parent_id) {
-            $parent = Entry::where('parent_id', $parent_id)->firstOrFail();
+            $parent = Entry::where('id', $parent_id)->firstOrFail();
             if($parent->parent_id) {
                 $parent_id = $parent->parent_id;
             }
-            $entry->content = $parent_id;
+            $entry->parent_id = $parent_id;
             $entry->save();
-            return  redirect(route('entry.show', ['entry' => $entry]));
+            return  redirect(route('entry.show', ['entry' => $parent]));
         }
         $entry->save();
         return redirect(route('index'));
@@ -56,7 +56,8 @@ class EntryController extends Controller
      */
     public function show(Entry $entry)
     {
-        //
+        $entries = $entry->children()->paginate(15);
+        return view('entries.show')->with('entries', $entries)->with('parent', $entry);
     }
 
     /**
