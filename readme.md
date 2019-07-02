@@ -1,4 +1,5 @@
-#Guestbook
+<h1>Guestbook</h1>
+
 A small guestbook application
 ## Getting started
 Download and installation guide
@@ -26,9 +27,14 @@ Run composer install to get all dependencies specified in composer.json
  composer install
  ```
 Run npm install to install all dependencies specified in package.json
- ```
-  npm install
-  ```
+```
+npm install
+```
+Build assets
+```
+npm run production
+```
+    
 ### Database setup
 Create an empty mysql database with user
 ```
