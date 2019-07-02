@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class Entry extends Model
 {
@@ -16,6 +18,7 @@ class Entry extends Model
 
         static::creating(function ($entry) {
             $entry->id = Uuid::uuid4();
+            $entry->user_id = Auth::id();
         });
     }
 
