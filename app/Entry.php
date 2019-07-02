@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class Entry extends Model
 {
@@ -16,21 +18,22 @@ class Entry extends Model
 
         static::creating(function ($entry) {
             $entry->id = Uuid::uuid4();
+            $entry->user_id = Auth::id();
         });
     }
 
     public function user()
     {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function children()
     {
-        $this->hasMany('App\Entry', 'parent_id');
+        return $this->hasMany('App\Entry', 'parent_id');
     }
 
     public function parent()
     {
-        $this->hasMany('App\Entry', 'parent_id');
+        return $this->hasMany('App\Entry', 'parent_id');
     }
 }

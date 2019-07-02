@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="form-group col-6 m-auto">
-            <label for="exampleFormControlTextarea1">Leave an entry</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+    @if(Auth::user())
+    <div class="container col-6 m-auto bg-dark">
+        <form action="{{ route('entry.store') }}" method="post" id="newEntryForm">
+            @include('entries.form')
+        </form>
+        @include('entries.results')
     </div>
+    @endif
 @endsection
 
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $('#submitNewEntry').prop('disabled', false)
+        })
+    </script>
+@endsection

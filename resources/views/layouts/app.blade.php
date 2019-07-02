@@ -13,11 +13,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg bg-dark text-white">
+<body class="bg-dark text-white">
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark border-bottom mb-1 bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom mb-1 bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 Guestbook
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();"
+                               document.getElementById('logout-form.blade.php').submit();"
                                 >
                                     Logout
                                 </a>

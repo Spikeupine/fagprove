@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
+Route::get('/', 'EntryController@index')->name('index');
+Route::resource('entry', 'EntryController', ['except' => [
+    'index', 'create', 'edit'
+]]);
