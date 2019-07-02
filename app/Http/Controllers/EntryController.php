@@ -15,7 +15,8 @@ class EntryController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $entries  = Entry::where('parent_id', null)->orderBy('created_at', 'desc')->paginate(15);
+        return view('welcome')->with('entries', $entries);
     }
 
 
@@ -41,10 +42,10 @@ class EntryController extends Controller
             }
             $entry->content = $parent_id;
             $entry->save();
-            return $this->show($entry);
+            return  redirect(route('entry.show', ['entry' => $entry]));
         }
         $entry->save();
-        return $this->index();
+        return redirect(route('index'));
     }
 
     /**

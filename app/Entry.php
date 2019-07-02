@@ -24,16 +24,16 @@ class Entry extends Model
 
     public function user()
     {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function children()
     {
-        $this->hasMany('App\Entry', 'parent_id');
+        return $this->hasMany('App\Entry', 'parent_id');
     }
 
     public function parent()
     {
-        $this->hasMany('App\Entry', 'parent_id');
+        return $this->hasMany('App\Entry', 'parent_id');
     }
 }

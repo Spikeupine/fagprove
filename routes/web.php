@@ -14,7 +14,7 @@
 
 Auth::routes();
 
-Route::get('/', 'EntryController@index');
+Route::get('/', 'EntryController@index')->name('index');
 Route::resource('entry', 'EntryController', ['except' => [
     'index', 'create', 'edit'
 ]]);

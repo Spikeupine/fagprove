@@ -13,9 +13,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg bg-dark text-white">
+<body class="bg-dark text-white">
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark border-bottom mb-1 bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom mb-1 bg-dark">
             <div class="container">
             <a class="navbar-brand" href="#">
                 Guestbook
