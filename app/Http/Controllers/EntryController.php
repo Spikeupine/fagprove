@@ -69,7 +69,15 @@ class EntryController extends Controller
      */
     public function update(Request $request, Entry $entry)
     {
-        //
+        $request->validate([
+            'content' => 'required',
+        ]);
+
+        if (Auth::id() === $entry->user_id) {
+            $entry->content = $request->get('content');
+            $entry->save();
+            return redirect(route('entry.show',['entry' => $entry]));
+        }
     }
 
     /**
@@ -80,6 +88,6 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
-        //
+
     }
 }

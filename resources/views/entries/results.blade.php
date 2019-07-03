@@ -5,6 +5,9 @@
                 <div class="form-control pb-5 col-12" id="{{ $entry->id }}">{{ $entry->content }}</div>
                 <small class="form-text text-muted">
                     {{ $entry->user()->first()->username.' | ' .$entry->created_at }}
+                    @if((string)$entry->created_at !== (string)$entry->updated_at)
+                        (edited) |
+                    @endif
                     @if($entry->parent_id === null)
                         | <a href="{{ route('entry.show', ['entry' => $entry]) }}" class=" stretched-link">reply</a>
                     @endif

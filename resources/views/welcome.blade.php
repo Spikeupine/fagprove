@@ -10,11 +10,3 @@
     </div>
     @endif
 @endsection
-
-@section('js')
-    <script>
-        $(document).ready(function () {
-            $('#submitNewEntry').prop('disabled', false)
-        })
-    </script>
-@endsection

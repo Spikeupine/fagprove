@@ -15,10 +15,10 @@
         <button type="submit" id="submitNewEntry" class="btn btn-outline-primary" disabled>Submit</button>
     </div>
 </div>
-@section('js')
+@section('formJs')
     <script>
         $(document).ready(function () {
-            $('#submitNewEntry').prop('disabled', false)
+            $('#submitNewEntry').prop('disabled', false);
         })
     </script>
 @endsection
