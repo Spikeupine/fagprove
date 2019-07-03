@@ -8,8 +8,8 @@
                     @if((string)$entry->created_at !== (string)$entry->updated_at)
                         (edited) |
                     @endif
-                    @if($entry->parent_id === null)
-                        | <a href="{{ route('entry.show', ['entry' => $entry]) }}" class=" stretched-link">reply</a>
+                    @if($entry->parent_id === null || $entry->user_id === \Illuminate\Support\Facades\Auth::id())
+                        | <a href="{{ route('entry.show', ['entry' => $entry]) }}" class=" stretched-link">view</a>
                     @endif
                 </small>
             </div>

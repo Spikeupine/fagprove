@@ -4,7 +4,7 @@
             <div class="form-group">
                 <div class="card bg-dark">
                     @if($parent->user_id === \Illuminate\Support\Facades\Auth::id())
-                        <form action="{{ route('entry.update', ['entry' => $parent->id]) }}" method="post" id="newEntryForm">
+                        <form action="{{ route('entry.update', ['entry' => $parent->id]) }}" method="post" id="updateEntryForm">
                             <input type="hidden" name="_method" value="PATCH">
                             {{ csrf_field() }}
                             <div class="form-group">
@@ -59,10 +59,12 @@
                     </div>
                 </div>
             </div>
+        @if(!$parent->parent_id)
         <form action="{{ route('entry.store') }}" method="post" id="newEntryForm">
             <input type="hidden" name="parent_id" value="{{ $parent->id }}">
             @include('entries.form')
         </form>
+        @endif
         @include('entries.results')
     </div>
 @endsection

@@ -37,9 +37,9 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                               document.getElementById('logout-form.blade.php').submit();"
+                                   document.getElementById('logout-form').submit();"
                                 >
                                     Logout
                                 </a>

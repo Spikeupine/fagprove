@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class EntryController extends Controller
 {
+    public function __construct()
+    {
+
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +61,7 @@ class EntryController extends Controller
      */
     public function show(Entry $entry)
     {
-        $entries = $entry->children()->paginate(15);
+        $entries = $entry->children()->orderBy('created_at', 'desc')->paginate(15);
         return view('entries.show')->with('entries', $entries)->with('parent', $entry);
     }
 
@@ -78,6 +83,7 @@ class EntryController extends Controller
             $entry->save();
             return redirect(route('entry.show',['entry' => $entry]));
         }
+        abort(403, 'Access denied');
     }
 
     /**
@@ -88,6 +94,10 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
-
+        if (Auth::id() === $entry->user_id) {
+            $entry->delete();
+            return redirect(route('index'));
+        }
+        abort(403, 'Access denied');
     }
 }
