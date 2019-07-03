@@ -5,8 +5,11 @@
                 <div class="form-control pb-5 col-12" id="{{ $entry->id }}">{{ $entry->content }}</div>
                 <small class="form-text text-muted">
                     {{ $entry->user()->first()->username.' | ' .$entry->created_at }}
-                    @if($entry->parent_id === null)
-                        | <a href="{{ route('entry.show', ['entry' => $entry]) }}" class=" stretched-link">reply</a>
+                    @if((string)$entry->created_at !== (string)$entry->updated_at)
+                        (edited) |
+                    @endif
+                    @if($entry->parent_id === null || $entry->user_id === \Illuminate\Support\Facades\Auth::id())
+                        | <a href="{{ route('entry.show', ['entry' => $entry]) }}" class=" stretched-link">view</a>
                     @endif
                 </small>
             </div>

@@ -1,3 +1,4 @@
+@auth
 {{ csrf_field() }}
 <div class="form-group">
     <label for="newEntryText">Leave an entry</label>
@@ -15,10 +16,13 @@
         <button type="submit" id="submitNewEntry" class="btn btn-outline-primary" disabled>Submit</button>
     </div>
 </div>
-@section('js')
+@endauth
+@section('formJs')
+    @auth()
     <script>
         $(document).ready(function () {
-            $('#submitNewEntry').prop('disabled', false)
+            $('#submitNewEntry').prop('disabled', false);
         })
     </script>
+    @endauth
 @endsection
