@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-dark text-white">
+{{--Base tempelate with bootstrap nav-bar for application--}}
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom mb-1 bg-dark">
             <div class="container">
@@ -25,11 +26,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    {{--<li class="nav-item">--}}
-                        {{--<a class="nav-link" href="#">Link</a>--}}
-                    {{--</li>--}}
-                </ul>
+                <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
                     @if(Auth::user())
                         <li class="nav-item dropdown">

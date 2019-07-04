@@ -14,13 +14,16 @@ class User extends Authenticatable
 
     public $incrementing = false;
 
-    // boot function from https://dev.to/wilburpowery/easily-use-uuids-in-laravel-45be
+    /**
+     * boot function from https://dev.to/wilburpowery/easily-use-uuids-in-laravel-45be
+     * Sets id of user to a uuid on creation
+     */
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($user) {
-            $user->{$user->getKeyName()} = Uuid::uuid4();
+            $user->id = Uuid::uuid4();
         });
     }
 
@@ -43,6 +46,10 @@ class User extends Authenticatable
     ];
 
 
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function Entries()
     {
         return $this->hasMany('App\Entry');
