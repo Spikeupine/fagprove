@@ -112,4 +112,15 @@ Add guestbook.local to hosts file
 ```
 127.0.0.1    guestbook.local
 ```
+## Permission denied error
+
+If you run into permission denied error set owner to 'youruser':www-data on all the files in the project
+```
+sudo chown youruser:www-data -R .
+```
+
+Also make sure you have the correct permissions for the storage folder
+```
+sudo chmod {example: 775} -R storage/
+```
 
