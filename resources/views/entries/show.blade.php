@@ -3,6 +3,7 @@
     <div class="container col-6 bg-dark">
             <div class="form-group">
                 <div class="card bg-dark">
+                    {{--Displays edit form if user is owner else just shows post--}}
                     @if($parent->user_id === \Illuminate\Support\Facades\Auth::id())
                         <form action="{{ route('entry.update', ['entry' => $parent->id]) }}" method="post" id="updateEntryForm">
                             <input type="hidden" name="_method" value="PATCH">
@@ -27,11 +28,11 @@
                     @endif
                     <div class="form-text">
                         {{ $parent->user()->first()->username.' | ' .$parent->created_at .' | ' }}
-
+                        {{-- Checks if entry has been updated --}}
                         @if((string)$parent->created_at !== (string)$parent->updated_at)
                             <span class="text-muted">(edited)</span> |
                         @endif
-
+                        {{--Displays edit and delete links if user is owner--}}
                         @if($parent->user_id === \Illuminate\Support\Facades\Auth::id())
                             <div class="modal fade confirm-delete-modal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteEntry" aria-hidden="true">
                                 <div class="modal-dialog modal-sm">
@@ -59,6 +60,7 @@
                     </div>
                 </div>
             </div>
+        {{--Only shows form if current entry doesn't have a parent--}}
         @if(!$parent->parent_id)
         <form action="{{ route('entry.store') }}" method="post" id="newEntryForm">
             <input type="hidden" name="parent_id" value="{{ $parent->id }}">

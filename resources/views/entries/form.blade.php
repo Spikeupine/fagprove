@@ -1,3 +1,4 @@
+{{--@auth only displays the code if user is logged in--}}
 @auth
 {{ csrf_field() }}
 <div class="form-group">
@@ -17,6 +18,7 @@
     </div>
 </div>
 @endauth
+{{--Sperate section for the form javascript since it use the same section twise--}}
 @section('formJs')
     @auth()
     <script>

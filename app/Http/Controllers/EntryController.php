@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class EntryController extends Controller
 {
+    /**
+     * EntryController constructor.
+     * Will check if user is logged in
+     */
     public function __construct()
     {
-
         $this->middleware('auth')->except(['index', 'show']);
     }
     /**
-     * Display a listing of the resource.
+     * Display a listing of the entries in a paginated results.
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,6 +29,11 @@ class EntryController extends Controller
 
 
     /**
+     * Will store the new entry
+     *
+     * If adding a parent who already has a parent
+     * the parent will be set to that parent instead
+     *
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
@@ -54,7 +62,7 @@ class EntryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified entry with children.
      *
      * @param  \App\Entry  $entry
      * @return \Illuminate\Http\Response
@@ -66,7 +74,9 @@ class EntryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified entry in storage.
+     *
+     * Includes check if current user is owner, throws 403 if not
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Entry  $entry
@@ -88,6 +98,8 @@ class EntryController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * Includes check if current user is owner, throws 403 if not
      *
      * @param  \App\Entry  $entry
      * @return \Illuminate\Http\Response
