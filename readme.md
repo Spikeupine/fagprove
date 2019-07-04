@@ -4,10 +4,26 @@ A small guestbook application
 ## Getting started
 Download and installation guide
 ### Requirements
-
+- [Lamp](https://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
+- [Larvel requirements](https://laravel.com/docs/5.5#server-requirements)
 - [Composer](https://getcomposer.org/download/)
 - [Npm](https://www.npmjs.com/get-npm)
-- [Mysql](https://dev.mysql.com/downloads/)
+
+### Install requirements
+
+If you haven't already install a lamp server 
+
+[tutorial for ubuntu](https://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
+
+Install Composer
+```
+sudo apt install composer
+```
+Install nodejs and npm
+```
+sudo apt install nodejs
+sudo apt install npm
+```
 
 ### Clone repository
 
@@ -17,10 +33,6 @@ git clone https://github.com/Spikeupine/fagprove.git
 ```
 Copy ```.env.example``` to ```.env```
 
-Generate key using
-```
-php artisan key:generate
-```
 ### Dependencies
 Run composer install to get all dependencies specified in composer.json
 ```
@@ -33,6 +45,11 @@ npm install
 Build assets
 ```
 npm run production
+```
+
+Generate key using
+```
+php artisan key:generate
 ```
     
 ### Database setup
