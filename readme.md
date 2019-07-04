@@ -42,7 +42,7 @@ Run npm install to install all dependencies specified in package.json
 ```
 npm install
 ```
-If you have trouble  running npm install make sure you have the [latest node version installed]https://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version
+If you have trouble  running npm install make sure you have the [latest node version installed](https://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version)
 
 Build assets
 ```
