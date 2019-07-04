@@ -105,7 +105,7 @@ In guestbook.conf
 ```
 Add new config and restart apache
 ```
-sudo a2ensite groupsapi
+sudo a2ensite guestbook.conf
 sudo service apache2 restart
 ```
 Add guestbook.local to hosts file
