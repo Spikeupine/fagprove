@@ -5,13 +5,13 @@ A small guestbook application
 Download and installation guide
 ### Requirements
 - [Lamp](https://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
-- [Larvel requirements](https://laravel.com/docs/5.5#server-requirements)
+- [Larvel 5.5 requirements](https://laravel.com/docs/5.5#server-requirements)
 - [Composer](https://getcomposer.org/download/)
 - [Npm](https://www.npmjs.com/get-npm)
 
 ### Install requirements
 
-If you haven't already install a lamp server 
+If you haven't already install a lamp server with ubuntu 16.04
 
 [tutorial for ubuntu](https://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
 
