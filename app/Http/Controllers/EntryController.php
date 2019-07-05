@@ -40,7 +40,7 @@ class EntryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'content' => 'required',
+            'content' => 'required|max:255',
             'parent_id' => 'sometimes|required|exists:entries,id'
         ]);
 
@@ -85,7 +85,7 @@ class EntryController extends Controller
     public function update(Request $request, Entry $entry)
     {
         $request->validate([
-            'content' => 'required',
+            'content' => 'required|max:255',
         ]);
 
         if (Auth::id() === $entry->user_id) {
@@ -106,7 +106,7 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
-        if (Auth::id() === $entry->user_id) {
+        if (Auth::id() === $entry->user_id || Auth::user()->isAdmin) {
             $entry->delete();
             return redirect(route('index'));
         }
