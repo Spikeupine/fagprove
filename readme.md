@@ -78,6 +78,18 @@ Run migrations to set up database
 php artisan migrate
 ```
 
+### Email
+
+If you wish to setup email (for password reset) you need to insert that into the ```MAIL_*``` Fields in the ```.env``` file
+
+If you just want to test locally you can set the maildriver to log
+
+```
+MAIL_DRIVER=log
+```
+
+This will output the email to storage/logs/laravel.log
+
 ### Deploying with apache2
 Create a new configuration
 ```
