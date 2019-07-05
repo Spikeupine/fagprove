@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Uuid;
 
@@ -11,6 +12,8 @@ class Entry extends Model
     protected $keyType = 'string';
 
     public $incrementing = false;
+
+    use SoftDeletes;
 
     /**
      * When a new entry is created a new uuid is set as the id

@@ -106,7 +106,7 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
-        if (Auth::id() === $entry->user_id) {
+        if (Auth::id() === $entry->user_id || Auth::user()->isAdmin) {
             $entry->delete();
             return redirect(route('index'));
         }

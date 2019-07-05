@@ -33,7 +33,7 @@
                             <span class="text-muted">(edited)</span> |
                         @endif
                         {{--Displays edit and delete links if user is owner--}}
-                        @if($parent->user_id === \Illuminate\Support\Facades\Auth::id())
+                        @if($parent->user_id === \Illuminate\Support\Facades\Auth::id() || \Illuminate\Support\Facades\Auth::user()->isAdmin)
                             <div class="modal fade confirm-delete-modal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteEntry" aria-hidden="true">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content text-danger">
@@ -49,13 +49,15 @@
                                     </div>
                                 </div>
                             </div>
-                             <a href="" id="delete" data-toggle="modal" data-target=".confirm-delete-modal">delete</a> |
-                             <a href="#" id="submitEditedEntry">update post</a> |
                             <form action="{{ route('entry.destroy', [ 'entry' => $parent->id ]) }}" class="d-none" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
                                 {{ csrf_field() }}
                                 <input type="submit" id="deleteEntry">
                             </form>
+                             <a href="" id="delete" data-toggle="modal" data-target=".confirm-delete-modal">delete</a> |
+                        @endif
+                        @if($parent->user_id === \Illuminate\Support\Facades\Auth::id())
+                            <a href="#" id="submitEditedEntry">update post</a> |
                         @endif
                     </div>
                 </div>
