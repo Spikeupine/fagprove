@@ -1,6 +1,7 @@
 <h1>Guestbook</h1>
 
-A small guestbook application
+A small guestbook application.
+This project is my final exam of apprentenship in IT-development. 
 ## Getting started
 Download and installation guide
 ### Requirements
